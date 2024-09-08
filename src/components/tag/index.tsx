@@ -6,7 +6,6 @@ interface Tag {
 }
 
 export function Tags({ tags }: any) {
-  console.log(tags)
   return (
     <div className="flex flex-wrap space-x-2">
       <Tag key={tags} name={tags} />

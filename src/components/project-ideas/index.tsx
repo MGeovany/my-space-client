@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { MutableRefObject, useEffect, useState } from 'react'
 import { LayoutGroup, motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import axios from 'axios'
@@ -17,7 +17,7 @@ export const ProjectIdeasList = () => {
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState<ProjectIdeas[]>([])
   const [scrollContainerRef, setScrollContainerRef] = useState<
-    React.MutableRefObject<HTMLElement | null> | undefined
+    MutableRefObject<HTMLElement | null> | undefined
   >(undefined)
 
   useEffect(() => {
@@ -35,15 +35,29 @@ export const ProjectIdeasList = () => {
       })
   }, [])
 
-  if (loading && data.length === 0) {
+  if (loading) {
     return (
       <ListContainer onRef={setScrollContainerRef}>
         <TitleBar
           scrollContainerRef={scrollContainerRef}
-          title="📡 Project Ideas"
+          title="Project Ideas"
         />
-        <div className="flex flex-1 items-center justify-center">
+        <div className="flex flex-1 items-center justify-center h-full">
           <LoadingSpinner />
+        </div>
+      </ListContainer>
+    )
+  }
+
+  if (data.length === 0) {
+    return (
+      <ListContainer onRef={setScrollContainerRef}>
+        <TitleBar
+          scrollContainerRef={scrollContainerRef}
+          title="Project Ideas"
+        />
+        <div className="flex flex-1 items-center justify-center h-full">
+          <h1 className="text-md text-gray-500">No project ideas found</h1>
         </div>
       </ListContainer>
     )

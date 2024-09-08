@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { MutableRefObject, useEffect, useState } from 'react'
 import { LayoutGroup, motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import axios from 'axios'
@@ -10,13 +10,16 @@ import { BookmarksTitleBar } from '@/components/bookmarks/bookmarks-title-bar'
 import { LoadingSpinner } from '@/components/loading-spinner'
 import { API_URL } from '@/constants'
 import { BookmarksListItem } from '@/components/bookmarks/bookmarks-list-item'
+import { TitleBar } from '../list-detail/TitleBar'
 
 export const BookmarksList = () => {
   const pathname = usePathname()
 
   const [loading, setLoading] = useState(false)
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([])
-  const [scrollContainerRef, setScrollContainerRef] = useState(null)
+  const [scrollContainerRef, setScrollContainerRef] = useState<
+    MutableRefObject<HTMLElement | null> | undefined
+  >(undefined)
 
   useEffect(() => {
     setLoading(true)
@@ -37,8 +40,19 @@ export const BookmarksList = () => {
     return (
       <ListContainer onRef={setScrollContainerRef}>
         <BookmarksTitleBar scrollContainerRef={scrollContainerRef} />
-        <div className="flex flex-1 items-center justify-center">
+        <div className="flex flex-1 items-center justify-center h-full">
           <LoadingSpinner />
+        </div>
+      </ListContainer>
+    )
+  }
+
+  if (bookmarks.length === 0) {
+    return (
+      <ListContainer onRef={setScrollContainerRef}>
+        <TitleBar scrollContainerRef={scrollContainerRef} title="Bookmarks" />
+        <div className="flex flex-1 items-center justify-center h-full">
+          <h1 className="text-md text-gray-500">No bookmarks found</h1>
         </div>
       </ListContainer>
     )

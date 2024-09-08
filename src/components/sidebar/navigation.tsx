@@ -34,8 +34,6 @@ function ThisAddBookmarkDialog() {
       description: 'This is a bookmark content',
       tag: 'porfolio',
     }) */
-
-    console.log(accessToken, 'accessToken')
   }
 
   return (

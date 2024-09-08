@@ -1,12 +1,17 @@
 'use client'
 
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 
 import { Detail } from '@/components/list-detail/detail'
 import { TitleBar } from '@/components/list-detail/TitleBar'
 import Link from 'next/link'
 import { useUser } from '@auth0/nextjs-auth0/client'
+import { API_URL, toggleLogin } from '@/constants'
+import axios from 'axios'
+import toast from 'react-hot-toast'
+import { useHotkeys } from 'react-hotkeys-hook'
+import { registerUser } from '@/services/api/register-user'
 
 function SectionTitle(props: any) {
   return (
@@ -72,7 +77,18 @@ const workHistory = [
 ]
 
 export function Intro() {
-  const { user, error, isLoading } = useUser()
+  const [start, setStart] = useState(false)
+  const { user } = useUser()
+
+  useEffect(() => {
+    if (user) {
+      registerUser(user)
+    }
+  }, [user])
+
+  console.log(user)
+
+  useHotkeys(toggleLogin, () => setStart((p) => !p))
 
   const titleRef = useRef<HTMLParagraphElement>(document.createElement('p'))
   const scrollContainerRef = useRef(null)
@@ -96,7 +112,14 @@ export function Intro() {
             <SectionContent>
               <div className="prose text-primary">
                 <p>
-                  Hi, I’m Marlon Geovany Castro Mejia. I’m a{' '}
+                  Hi, I’m Marlon Geovany Castro Mejia.{' '}
+                  {!start &&
+                    (!user ? (
+                      <Link href="/api/auth/login">Login with auth0</Link>
+                    ) : (
+                      <Link href="/api/auth/logout">Logout</Link>
+                    ))}{' '}
+                  I’m a{' '}
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
@@ -178,18 +201,6 @@ export function Intro() {
                     key={job.title}
                   />
                 ))}
-              </div>
-            </SectionContent>
-          </SectionContainer>
-
-          <SectionContainer>
-            <SectionContent>
-              <div className="prose text-primary">
-                {!user ? (
-                  <Link href="/api/auth/login">Login</Link>
-                ) : (
-                  <Link href="/api/auth/logout">Logout</Link>
-                )}
               </div>
             </SectionContent>
           </SectionContainer>

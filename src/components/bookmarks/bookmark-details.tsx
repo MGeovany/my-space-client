@@ -95,10 +95,9 @@ export function BookmarkDetail({ id }: { id: string }) {
               rel="noopener"
               className="flex items-center space-x-2 leading-snug text-tertiary"
             >
-              {imageBroken ? (
-                <Icons.url />
-              ) : null
-              /*   <Image
+              {
+                imageBroken ? <Icons.url /> : null
+                /*   <Image
                   src={`https://www.google.com/s2/favicons?domain=${bookmark.url}`}
                   alt="favicon"
                   width={16}
