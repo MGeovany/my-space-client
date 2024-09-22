@@ -1,6 +1,6 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 @layer base {
   html {
@@ -9,7 +9,7 @@
 
   /* handles safari overscroll background color */
   body:after {
-    content: "";
+    content: '';
     position: fixed;
     top: -50%;
     right: -50%;
@@ -29,9 +29,9 @@
 
 @layer components {
   /* needed to override tailwind forms styles */
-  select {
+  /*   select {
     @apply w-full px-4 py-2 border border-gray-200 rounded outline-none text-primary bg-gray-1000 bg-opacity-5 hover:bg-opacity-10 focus:border-gray-1000 focus:outline-none focus:ring-0 dark:border-gray-800 dark:bg-white dark:focus:border-gray-600;
-  }
+  } */
 
   button:focus,
   a:focus {
@@ -45,19 +45,19 @@
     @apply outline-none ring-0 ring-offset-0;
   }
 
-  input[type="text"],
+  /*   input[type='text'],
   textarea {
-    @apply bg-white border border-gray-200 outline-none dark:border-gray-700 dark:bg-gray-800;
-  }
+    @apply bg-white border border-gray-200 outline-none dark:border-gray-700 dark:bg-gray-800 text-white;
+  } */
 
-  input[type="checkbox"] {
+  /*   input[type='checkbox'] {
     @apply dark:border-gray-600 dark:bg-gray-700;
-  }
+  } */
 
-  input:focus,
+  /*   input:focus,
   textarea:focus {
     @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-white dark:ring-offset-black;
-  }
+  } */
 
   .font-list-heading {
     @apply font-sans text-lg font-bold text-primary;
@@ -68,14 +68,17 @@
   }
 
   .bg-dots {
-    background: linear-gradient(90deg, #f9fafb 15px, transparent 1%) center,
-      linear-gradient(#f9fafb 15px, transparent 1%) center, rgba(0, 0, 0, 0.24);
+    background:
+      linear-gradient(90deg, #f9fafb 15px, transparent 1%) center,
+      linear-gradient(#f9fafb 15px, transparent 1%) center,
+      rgba(0, 0, 0, 0.24);
     background-size: 16px 16px;
   }
 
   @media (prefers-color-scheme: dark) {
     .bg-dots {
-      background: linear-gradient(90deg, #050505 15px, transparent 1%) center,
+      background:
+        linear-gradient(90deg, #050505 15px, transparent 1%) center,
         linear-gradient(#050505 15px, transparent 1%) center,
         rgba(255, 255, 255, 0.16);
       background-size: 16px 16px;
@@ -183,7 +186,7 @@
 
   .meta:before,
   .meta:after {
-    content: "";
+    content: '';
     position: absolute;
     width: 1024px;
     height: 1024px;

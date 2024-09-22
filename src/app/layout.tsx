@@ -1,11 +1,14 @@
-import { Inter } from 'next/font/google'
 import './globals.css'
 import '../styles/custom-styles.css'
 import '../styles/dracula.css'
 import '../styles/prose-styles.css'
-import { Providers } from '@/components/providers'
-import { SiteLayout } from '@/components/layouts'
+import '@mantine/core/styles.css'
+
+import { Inter } from 'next/font/google'
 import { ReactNode } from 'react'
+
+import { SiteLayout } from '@/components/layouts'
+import { Providers } from '@/components/providers'
 
 const inter = Inter({ subsets: ['latin'] })
 

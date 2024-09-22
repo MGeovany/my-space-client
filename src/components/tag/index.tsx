@@ -1,5 +1,6 @@
-import { BookmarkTag } from '@/types/bookmark'
 import { XCircle } from 'react-feather'
+
+import { BookmarkTag } from '@/constants'
 
 interface Tag {
   name: BookmarkTag | string
@@ -31,22 +32,9 @@ export function Tag({ name }: TagComponentProps) {
     [BookmarkTag.TOOLS]: 'border-red-200 text-red-600 bg-red-500 bg-opacity-5',
     [BookmarkTag.WEB]:
       'border-gray-200 text-gray-600 dark:text-gray-300 bg-gray-200 bg-opacity-30 dark:bg-opacity-10 hover:bg-opacity-40',
-    [BookmarkTag.ClearTagPicker]:
-      'border-red-200 text-red-600 bg-red-500 bg-opacity-5',
   }
 
   const specificClasses = tagStyles[name as BookmarkTag] || ''
 
-  return (
-    <span className={`${baseClasses} ${specificClasses}`}>
-      {name === BookmarkTag.ClearTagPicker ? (
-        <>
-          <XCircle size={16} />
-          <span>Clear tag</span>
-        </>
-      ) : (
-        name
-      )}
-    </span>
-  )
+  return <span className={`${baseClasses} ${specificClasses}`}>{name}</span>
 }

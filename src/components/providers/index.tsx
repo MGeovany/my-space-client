@@ -1,11 +1,13 @@
 'use client'
-import { NextPageContext } from 'next'
 import { UserProvider } from '@auth0/nextjs-auth0/client'
+import { MantineProvider } from '@mantine/core'
+import { NextPageContext } from 'next'
+import { createContext, useState } from 'react'
+
+import { AuthProvider } from '@/context'
 
 import { SEO } from './seo'
 import { Toast } from './toaster'
-import { createContext, useState } from 'react'
-import { AuthProvider } from '@/context'
 
 interface Props {
   children?: any
@@ -33,13 +35,15 @@ export function Providers({ children, pageProps }: Props) {
 
   return (
     <>
-      <UserProvider>
-        <SEO />
-        <Toast />
-        <GlobalNavigationContext.Provider value={state}>
-          {children}
-        </GlobalNavigationContext.Provider>
-      </UserProvider>
+      <MantineProvider>
+        <UserProvider>
+          <SEO />
+          <Toast />
+          <GlobalNavigationContext.Provider value={state}>
+            {children}
+          </GlobalNavigationContext.Provider>
+        </UserProvider>
+      </MantineProvider>
     </>
   )
 }

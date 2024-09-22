@@ -1,9 +1,15 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
 import { UserProfile, useUser } from '@auth0/nextjs-auth0/client'
+import { Modal } from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks'
+import axios from 'axios'
 import { Linkedin, Plus } from 'lucide-react'
+import { usePathname } from 'next/navigation'
+import { useState } from 'react'
+import toast from 'react-hot-toast'
 
+import { GhostButton } from '@/components/button'
 import {
   BookmarksIcon,
   ExternalLinkIcon,
@@ -11,37 +17,152 @@ import {
   HomeIcon,
   WritingIcon,
 } from '@/components/icon'
+import { ProjectIcon } from '@/components/icons/shared'
+import { API_URL, BookmarkTag, rolNameSpace } from '@/constants'
+
 import { NavigationLink } from './navigation-link'
 
-import { GhostButton } from '@/components/button'
-import { ProjectIcon } from '@/components/icons/shared'
-import { API_URL, rolNameSpace } from '@/constants'
-import { useEffect, useState } from 'react'
-import { getAccessToken } from '@auth0/nextjs-auth0'
-import axios from 'axios'
-
 function ThisAddBookmarkDialog() {
-  const { user } = useUser()
+  const [opened, { open, close }] = useDisclosure(false)
+  const [title, setTitle] = useState('')
+  const [url, setUrl] = useState('')
+  const [description, setDescription] = useState('')
+  const [tag, setTag] = useState('')
 
-  if (!user) return null
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault() // Previene la recarga de la página
 
-  const handleSendBookmark = async () => {
-    const { accessToken } = await getAccessToken()
+    const res = await axios.get('/api/auth/get-auth0-token')
+    localStorage.setItem('accessToken', res.data.accessToken)
 
-    /*   const response = await axios.post(`${API_URL}/bookmark`, {
-      title: 'This is a bookmark',
-      url: 'https://example.com',
-      description: 'This is a bookmark content',
-      tag: 'porfolio',
-    }) */
+    const accessToken = localStorage.getItem('accessToken')
+
+    if (!accessToken) {
+      console.error('No access token available')
+      return
+    }
+
+    try {
+      const response = await axios.post(
+        `${API_URL}/bookmark`,
+        {
+          title,
+          url,
+          description,
+          tag,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      )
+
+      close() // Cierra el modal después de agregar el bookmark
+
+      if (response.status === 200) {
+        toast.success('Bookmark added successfully')
+      }
+    } catch (error) {
+      toast.error('Failed to add bookmark')
+      console.error(error)
+    }
   }
 
   return (
-    <div onClick={handleSendBookmark}>
-      <GhostButton aria-label="Add bookmark" size="small-square">
-        <Plus size={16} />
-      </GhostButton>
-    </div>
+    <>
+      <div onClick={open}>
+        <GhostButton aria-label="Add bookmark" size="small-square">
+          <Plus size={16} />
+        </GhostButton>
+      </div>
+      <Modal opened={opened} onClose={close} centered padding={'lg'}>
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">
+          Create Bookmark
+        </h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label
+              htmlFor="title"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Title
+            </label>
+            <input
+              id="title"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="bg-white mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-black focus:border-black"
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="url"
+              className="block text-sm font-medium text-gray-700"
+            >
+              URL
+            </label>
+            <input
+              id="url"
+              type="url"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-black focus:border-black"
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="description"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Description
+            </label>
+            <textarea
+              id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-black focus:border-black"
+              rows={3}
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="tag"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Tag
+            </label>
+            <select
+              id="tag"
+              value={tag}
+              onChange={(e) => setTag(e.target.value as BookmarkTag)}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-black focus:border-black"
+              required
+            >
+              {Object.values(BookmarkTag).map((tagValue) => (
+                <option key={tagValue} value={tagValue}>
+                  {tagValue}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full py-2 px-4 bg-black text-white font-semibold rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+          >
+            Submit
+          </button>
+        </form>
+      </Modal>
+    </>
   )
 }
 

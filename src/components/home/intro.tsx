@@ -1,16 +1,14 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useUser } from '@auth0/nextjs-auth0/client'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
+import { useHotkeys } from 'react-hotkeys-hook'
 
 import { Detail } from '@/components/list-detail/detail'
 import { TitleBar } from '@/components/list-detail/TitleBar'
-import Link from 'next/link'
-import { useUser } from '@auth0/nextjs-auth0/client'
 import { API_URL, toggleLogin } from '@/constants'
-import axios from 'axios'
-import toast from 'react-hot-toast'
-import { useHotkeys } from 'react-hotkeys-hook'
 import { registerUser } from '@/services/api/register-user'
 
 function SectionTitle(props: any) {
@@ -85,8 +83,6 @@ export function Intro() {
       registerUser(user)
     }
   }, [user])
-
-  console.log(user)
 
   useHotkeys(toggleLogin, () => setStart((p) => !p))
 
