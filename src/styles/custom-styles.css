@@ -16,7 +16,7 @@
     bottom: -50%;
     left: -50%;
     z-index: -1;
-    @apply bg-white dark:bg-black;
+    /* @apply bg-white dark:bg-black; */
   }
 
   /* handles dark mode in native uis */
@@ -33,7 +33,7 @@
     @apply w-full px-4 py-2 border border-gray-200 rounded outline-none text-primary bg-gray-1000 bg-opacity-5 hover:bg-opacity-10 focus:border-gray-1000 focus:outline-none focus:ring-0 dark:border-gray-800 dark:bg-white dark:focus:border-gray-600;
   } */
 
-  button:focus,
+  /* button:focus,
   a:focus {
     @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-white dark:ring-blue-500 dark:ring-offset-black;
   }
@@ -57,7 +57,7 @@
   /*   input:focus,
   textarea:focus {
     @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-white dark:ring-offset-black;
-  } */
+  } 
 
   .font-list-heading {
     @apply font-sans text-lg font-bold text-primary;
@@ -66,7 +66,7 @@
   .tabbed-navigation::-webkit-scrollbar {
     display: none;
   }
-
+*/
   .bg-dots {
     background:
       linear-gradient(90deg, #f9fafb 15px, transparent 1%) center,
