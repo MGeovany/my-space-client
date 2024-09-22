@@ -1,7 +1,8 @@
 'use client'
-import { ReactElement, ReactNode } from 'react'
-import { Sidebar } from '../sidebar/'
 import { usePathname } from 'next/navigation'
+import { ReactElement, ReactNode } from 'react'
+
+import { Sidebar } from '../sidebar/'
 
 interface Props {
   list: ReactElement | null

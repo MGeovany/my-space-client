@@ -1,7 +1,8 @@
-import { memo, useState } from 'react'
 import Image from 'next/image'
-import { ListItem } from '@/components/list-detail/ListItem'
+import { memo, useState } from 'react'
+
 import { Icons } from '@/components/icons'
+import { ListItem } from '@/components/list-detail/ListItem'
 
 interface ProjectIdeaItemProps {
   projectIdeas: ProjectIdeas
@@ -29,10 +30,9 @@ export const ProjectIdeaListItem = memo<ProjectIdeaItemProps>(
         title={projectIdeas.title}
         byline={
           <div className="flex items-center space-x-2">
-            {imageBroken ? (
-              <Icons.url />
-            ) : null
-            /*  <Image
+            {
+              imageBroken ? <Icons.url /> : null
+              /*  <Image
                 src={`https://www.google.com/s2/favicons?domain=${projectIdeas.url}`}
                 alt="favicon"
                 width={16}

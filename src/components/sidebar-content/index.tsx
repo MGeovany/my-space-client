@@ -1,8 +1,9 @@
 import { format } from 'date-fns'
-import Link from 'next/link'
-import React, { FC, useState } from 'react'
-import { usePathname } from 'next/navigation'
 import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import React, { FC, useState } from 'react'
+
 import { Icons } from '../icons'
 
 interface SidebarContentProps {

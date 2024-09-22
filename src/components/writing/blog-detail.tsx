@@ -1,18 +1,18 @@
 'use client'
 
-import { MutableRefObject, RefObject, useEffect, useRef, useState } from 'react'
-import { NextSeo } from 'next-seo'
-import Link from 'next/link'
-import Image from 'next/image'
 import axios from 'axios'
+import Image from 'next/image'
+import Link from 'next/link'
+import { NextSeo } from 'next-seo'
+import { MutableRefObject, RefObject, useEffect, useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 
-import { API_URL } from '@/constants'
+import { Icons } from '@/components/icons'
 import { Detail } from '@/components/list-detail/detail'
-import routes from '@/config/routes'
 import { TitleBar } from '@/components/list-detail/TitleBar'
 import { MarkdownRenderer } from '@/components/markdown-renderer'
-import { Icons } from '@/components/icons'
+import routes from '@/config/routes'
+import { API_URL } from '@/constants'
 
 export function BlogDetail({ id }: { id: string }) {
   const [data, setData] = useState<Blog>()

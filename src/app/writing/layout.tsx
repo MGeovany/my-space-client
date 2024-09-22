@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+
 import { ListDetailView } from '@/components/layouts'
 import { WritingList } from '@/components/writing'
 

@@ -1,10 +1,11 @@
 'use client'
 
+import { useContext, useRef } from 'react'
+
 import { TitleBar } from '../list-detail/TitleBar'
 import { GlobalNavigationContext } from '../providers'
 import { SidebarNavigation } from './navigation'
 import { SidebarOverlay } from './overlay'
-import { useContext, useRef } from 'react'
 
 export function Sidebar() {
   const { isOpen } = useContext(GlobalNavigationContext)

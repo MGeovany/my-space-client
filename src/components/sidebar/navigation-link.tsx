@@ -1,6 +1,6 @@
 import Link from 'next/link'
-
 import { ElementType, useContext } from 'react'
+
 import { GlobalNavigationContext } from '../providers'
 
 export function NavigationLink({

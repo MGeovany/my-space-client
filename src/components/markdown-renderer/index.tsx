@@ -1,5 +1,6 @@
 import deepmerge from 'deepmerge'
 import Link from 'next/link'
+import toast from 'react-hot-toast'
 import Markdown from 'react-markdown'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSanitize, { defaultSchema } from 'rehype-sanitize'
@@ -8,7 +9,6 @@ import remarkGfm from 'remark-gfm'
 import linkifyRegex from 'remark-linkify-regex'
 
 import { CodeBlock } from './code-block'
-import toast from 'react-hot-toast'
 
 function LinkRenderer({ href, ...rest }: any) {
   // auto-link headings

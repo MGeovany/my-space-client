@@ -2,7 +2,6 @@
 
 import { ArrowLeft, Menu, X } from 'lucide-react'
 import Link from 'next/link'
-
 import {
   MutableRefObject,
   ReactNode,
@@ -13,6 +12,7 @@ import {
   useRef,
   useState,
 } from 'react'
+
 import { GlobalNavigationContext } from '../providers'
 
 interface TitleBarProps {

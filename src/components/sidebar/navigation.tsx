@@ -77,90 +77,92 @@ function ThisAddBookmarkDialog() {
         </GhostButton>
       </div>
       <Modal opened={opened} onClose={close} centered padding={'lg'}>
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">
-          Create Bookmark
-        </h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label
-              htmlFor="title"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Title
-            </label>
-            <input
-              id="title"
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="bg-white mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-black focus:border-black"
-              required
-            />
-          </div>
+        <div className="px-10 pb-5">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">
+            Create Bookmark
+          </h2>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label
+                htmlFor="title"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Title
+              </label>
+              <input
+                id="title"
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                className="bg-white mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-black focus:border-black"
+                required
+              />
+            </div>
 
-          <div>
-            <label
-              htmlFor="url"
-              className="block text-sm font-medium text-gray-700"
-            >
-              URL
-            </label>
-            <input
-              id="url"
-              type="url"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-black focus:border-black"
-              required
-            />
-          </div>
+            <div>
+              <label
+                htmlFor="url"
+                className="block text-sm font-medium text-gray-700"
+              >
+                URL
+              </label>
+              <input
+                id="url"
+                type="url"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-black focus:border-black"
+                required
+              />
+            </div>
 
-          <div>
-            <label
-              htmlFor="description"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Description
-            </label>
-            <textarea
-              id="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-black focus:border-black"
-              rows={3}
-              required
-            />
-          </div>
+            <div>
+              <label
+                htmlFor="description"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Description
+              </label>
+              <textarea
+                id="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-black focus:border-black"
+                rows={3}
+                required
+              />
+            </div>
 
-          <div>
-            <label
-              htmlFor="tag"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Tag
-            </label>
-            <select
-              id="tag"
-              value={tag}
-              onChange={(e) => setTag(e.target.value as BookmarkTag)}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-black focus:border-black"
-              required
-            >
-              {Object.values(BookmarkTag).map((tagValue) => (
-                <option key={tagValue} value={tagValue}>
-                  {tagValue}
-                </option>
-              ))}
-            </select>
-          </div>
+            <div>
+              <label
+                htmlFor="tag"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Tag
+              </label>
+              <select
+                id="tag"
+                value={tag}
+                onChange={(e) => setTag(e.target.value as BookmarkTag)}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-black focus:border-black"
+                required
+              >
+                {Object.values(BookmarkTag).map((tagValue) => (
+                  <option key={tagValue} value={tagValue}>
+                    {tagValue}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          <button
-            type="submit"
-            className="w-full py-2 px-4 bg-black text-white font-semibold rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
-          >
-            Submit
-          </button>
-        </form>
+            <button
+              type="submit"
+              className="w-full py-2 px-4 bg-black text-white font-semibold rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </Modal>
     </>
   )

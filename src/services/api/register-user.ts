@@ -1,7 +1,8 @@
-import { API_URL } from '@/constants'
 import { UserProfile } from '@auth0/nextjs-auth0/client'
 import axios from 'axios'
 import toast from 'react-hot-toast'
+
+import { API_URL } from '@/constants'
 
 export async function registerUser(user: UserProfile | undefined) {
   if (user) {

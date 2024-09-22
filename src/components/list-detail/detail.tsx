@@ -1,9 +1,9 @@
+import { forwardRef, ReactNode } from 'react'
 import { Compass } from 'react-feather'
 
 import Button from '../button'
-import { TitleBar } from './TitleBar'
 import { LoadingSpinner } from '../loading-spinner'
-import { forwardRef, ReactNode } from 'react'
+import { TitleBar } from './TitleBar'
 
 function ContentContainer(props: any) {
   return (

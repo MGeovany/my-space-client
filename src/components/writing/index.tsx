@@ -1,14 +1,15 @@
 'use client'
-import { useEffect, useState } from 'react'
+import axios from 'axios'
 import { LayoutGroup, motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
-import axios from 'axios'
+import { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 
 import { ListContainer } from '@/components/list-detail/ListContainer'
+import { TitleBar } from '@/components/list-detail/TitleBar'
 import { LoadingSpinner } from '@/components/loading-spinner'
 import { API_URL } from '@/constants'
-import { TitleBar } from '@/components/list-detail/TitleBar'
-import toast from 'react-hot-toast'
+
 import { BlogListItem } from './blog-list-item'
 
 export const WritingList = () => {

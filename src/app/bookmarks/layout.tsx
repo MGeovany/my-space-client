@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+
 import { BookmarksList } from '@/components/bookmarks/bookmarks-list'
 import { ListDetailView } from '@/components/layouts'
 

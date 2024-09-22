@@ -1,5 +1,6 @@
 'use client'
 import { NextSeo } from 'next-seo'
+
 import routes from '@/config/routes'
 
 export default function ProjectIdeas() {

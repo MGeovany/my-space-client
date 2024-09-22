@@ -1,20 +1,20 @@
 'use client'
 
-import { MutableRefObject, RefObject, useEffect, useRef, useState } from 'react'
-import { NextSeo } from 'next-seo'
-import Link from 'next/link'
+import axios from 'axios'
 import { LinkIcon } from 'lucide-react'
 import Image from 'next/image'
-import axios from 'axios'
+import Link from 'next/link'
+import { NextSeo } from 'next-seo'
+import { MutableRefObject, RefObject, useEffect, useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 
-import { API_URL } from '@/constants'
-import { Detail } from '@/components/list-detail/detail'
-import routes from '@/config/routes'
-import { TitleBar } from '@/components/list-detail/TitleBar'
-import { MarkdownRenderer } from '@/components/markdown-renderer'
 import { PrimaryButton } from '@/components/button'
 import { Icons } from '@/components/icons'
+import { Detail } from '@/components/list-detail/detail'
+import { TitleBar } from '@/components/list-detail/TitleBar'
+import { MarkdownRenderer } from '@/components/markdown-renderer'
+import routes from '@/config/routes'
+import { API_URL } from '@/constants'
 
 export function ProjectDetail({ id }: { id: string }) {
   const [data, setData] = useState<ProjectIdeas>()

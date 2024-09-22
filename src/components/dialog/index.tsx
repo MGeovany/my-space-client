@@ -1,6 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useRef, useState } from 'react'
 import { X } from 'react-feather'
+
 import { GhostButton } from '../button'
 
 interface DialogProps {

@@ -1,13 +1,14 @@
-import { LinkedinIcon } from "lucide-react";
+import { LinkedinIcon } from 'lucide-react'
+
 import {
   BookMarkIcon,
   GithubIcon,
   HomeIcon,
-  ProjectIcon,
-  WritingIcon,
   LoadingIcon,
+  ProjectIcon,
   UrlIcon,
-} from "./shared";
+  WritingIcon,
+} from './shared'
 
 export const Icons = {
   home: HomeIcon,
@@ -18,4 +19,4 @@ export const Icons = {
   linkedIn: LinkedinIcon,
   loading: LoadingIcon,
   url: UrlIcon,
-};
+}

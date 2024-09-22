@@ -1,7 +1,8 @@
-import React, { memo, useState } from 'react'
 import Image from 'next/image'
-import { ListItem } from '@/components/list-detail/ListItem'
+import React, { memo, useState } from 'react'
+
 import { Icons } from '@/components/icons'
+import { ListItem } from '@/components/list-detail/ListItem'
 
 interface BookmarksListItemProps {
   bookmark: Bookmark
@@ -29,10 +30,9 @@ export const BookmarksListItem = memo<BookmarksListItemProps>(
         title={bookmark.title}
         byline={
           <div className="flex items-center space-x-2">
-            {imageBroken ? (
-              <Icons.url />
-            ) : null
-            /*  <Image
+            {
+              imageBroken ? <Icons.url /> : null
+              /*  <Image
                 src={`https://www.google.com/s2/favicons?domain=${bookmark.url}`}
                 alt="favicon"
                 width={16}

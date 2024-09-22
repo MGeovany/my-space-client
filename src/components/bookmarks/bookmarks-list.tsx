@@ -1,15 +1,16 @@
 'use client'
-import { MutableRefObject, useEffect, useState } from 'react'
+import axios from 'axios'
 import { LayoutGroup, motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
-import axios from 'axios'
+import { MutableRefObject, useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
-import { ListContainer } from '@/components/list-detail/ListContainer'
+import { BookmarksListItem } from '@/components/bookmarks/bookmarks-list-item'
 import { BookmarksTitleBar } from '@/components/bookmarks/bookmarks-title-bar'
+import { ListContainer } from '@/components/list-detail/ListContainer'
 import { LoadingSpinner } from '@/components/loading-spinner'
 import { API_URL } from '@/constants'
-import { BookmarksListItem } from '@/components/bookmarks/bookmarks-list-item'
+
 import { TitleBar } from '../list-detail/TitleBar'
 
 export const BookmarksList = () => {

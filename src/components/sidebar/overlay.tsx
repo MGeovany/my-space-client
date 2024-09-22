@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+
 import { GlobalNavigationContext } from '../providers'
 
 export function SidebarOverlay() {
