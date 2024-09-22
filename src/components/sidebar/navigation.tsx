@@ -3,11 +3,8 @@
 import { UserProfile, useUser } from '@auth0/nextjs-auth0/client'
 import { Modal } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import axios from 'axios'
 import { Linkedin, Plus } from 'lucide-react'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
-import toast from 'react-hot-toast'
 
 import { GhostButton } from '@/components/button'
 import {
@@ -18,9 +15,10 @@ import {
   WritingIcon,
 } from '@/components/icon'
 import { ProjectIcon } from '@/components/icons/shared'
-import { API_URL, BookmarkTag, rolNameSpace } from '@/constants'
+import { rolNameSpace } from '@/constants'
 
 import BookmarkForm from '../bookmarks/bookmark-form'
+import ProjectIdeaForm from '../project-ideas/project-idea-form'
 import { NavigationLink } from './navigation-link'
 
 function ThisAddBookmarkDialog() {
@@ -35,10 +33,29 @@ function ThisAddBookmarkDialog() {
       </div>
       <Modal opened={opened} onClose={close} centered padding={'lg'}>
         <div className="px-10 pb-5">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
-            Create Bookmark
-          </h2>
           <BookmarkForm onClose={close} />
+        </div>
+      </Modal>
+    </>
+  )
+}
+
+const ThisAddProjectDialog = () => {
+  const [opened, { open, close }] = useDisclosure(false)
+
+  return (
+    <>
+      <div onClick={open}>
+        <GhostButton aria-label="Add project idea" size="small-square">
+          <Plus size={16} />
+        </GhostButton>
+      </div>
+      <Modal opened={opened} onClose={close} centered padding={'lg'}>
+        <div className="px-10 pb-5">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">
+            Create Project Idea
+          </h2>
+          <ProjectIdeaForm onClose={close} />
         </div>
       </Modal>
     </>
@@ -97,16 +114,16 @@ export function SidebarNavigation() {
           trailingAction:
             getUserRole(user) === 'admin' ? ThisAddBookmarkDialog : null,
         },
-        {
+        /*  {
           href: '/project-ideas',
           label: 'Project Ideas',
           icon: ProjectIcon,
           trailingAccessory: null,
           isActive: pathname === '/project-ideas',
           trailingAction:
-            getUserRole(user) === 'admin' ? ThisAddBookmarkDialog : null,
+            getUserRole(user) === 'admin' ? ThisAddProjectDialog : null,
           isExternal: false,
-        },
+        }, */
       ],
     },
 
