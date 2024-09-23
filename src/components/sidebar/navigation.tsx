@@ -19,6 +19,7 @@ import { rolNameSpace } from '@/constants'
 
 import BookmarkForm from '../bookmarks/bookmark-form'
 import ProjectIdeaForm from '../project-ideas/project-idea-form'
+import BlogForm from '../writing/blog-form'
 import { NavigationLink } from './navigation-link'
 
 function ThisAddBookmarkDialog() {
@@ -62,6 +63,30 @@ const ThisAddProjectDialog = () => {
   )
 }
 
+const ThisAddBlogDialog = () => {
+  const [opened, { open, close }] = useDisclosure(false)
+
+  return (
+    <>
+      <div onClick={open}>
+        <GhostButton aria-label="Add blog" size="small-square">
+          <Plus size={16} />
+        </GhostButton>
+      </div>
+      <Modal
+        opened={opened}
+        onClose={close}
+        centered
+        padding={'lg'}
+        size={'100vw'}
+        title="Create Blog"
+      >
+        <BlogForm onClose={close} />
+      </Modal>
+    </>
+  )
+}
+
 export function SidebarNavigation() {
   const pathname = usePathname()
   const { user } = useUser()
@@ -96,8 +121,9 @@ export function SidebarNavigation() {
           icon: WritingIcon,
           trailingAccessory: null,
           isActive: pathname === '/writing',
-          trailingAction: null,
           isExternal: false,
+          trailingAction:
+            getUserRole(user) === 'admin' ? ThisAddBlogDialog : null,
         },
       ],
     },

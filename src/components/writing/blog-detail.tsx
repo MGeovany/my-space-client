@@ -9,7 +9,7 @@ import toast from 'react-hot-toast'
 
 import { Icons } from '@/components/icons'
 import { Detail } from '@/components/list-detail/detail'
-import { TitleBar } from '@/components/list-detail/TitleBar'
+import { TitleBar } from '@/components/list-detail/title-bar'
 import { MarkdownRenderer } from '@/components/markdown-renderer'
 import routes from '@/config/routes'
 import { API_URL } from '@/constants'
@@ -85,7 +85,7 @@ export function BlogDetail({ id }: { id: string }) {
             >
               <Detail.Title ref={titleRef}>{data.title}</Detail.Title>
             </Link>
-            <Link
+            {/*  <Link
               href={data.url ?? ''}
               target="_blank"
               rel="noopener"
@@ -103,7 +103,7 @@ export function BlogDetail({ id }: { id: string }) {
                 />
               )}
               <span>{data.url ? new URL(data.url).hostname : ''}</span>
-            </Link>
+            </Link> */}
             {data.content && (
               <MarkdownRenderer
                 className="italic prose opacity-70"

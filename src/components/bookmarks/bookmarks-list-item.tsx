@@ -5,7 +5,7 @@ import React, { memo, useState } from 'react'
 import toast from 'react-hot-toast'
 
 import { Icons } from '@/components/icons'
-import { ListItem } from '@/components/list-detail/ListItem'
+import { ListItem } from '@/components/list-detail/list-item'
 import { API_URL } from '@/constants'
 import { useUserRole } from '@/hooks/useUserRole'
 
@@ -62,7 +62,7 @@ export const BookmarksListItem = memo<BookmarksListItemProps>(
                 onClick={async () => {
                   toast.dismiss(t.id)
                   try {
-                    const accessToken = localStorage.getItem('accessToken')
+                    const accessToken = localStorage.getItem('auth0Token')
 
                     if (!accessToken) {
                       console.error('No access token available')

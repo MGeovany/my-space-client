@@ -6,7 +6,6 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSanitize, { defaultSchema } from 'rehype-sanitize'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
-import linkifyRegex from 'remark-linkify-regex'
 
 import { CodeBlock } from './code-block'
 
@@ -38,7 +37,18 @@ function getComponentsForVariant(variant: any) {
     case 'longform': {
       return {
         a: LinkRenderer,
-        pre({ node, inline, className, children, ...props }) {
+        pre({
+          node,
+          inline,
+          className,
+          children,
+          ...props
+        }: {
+          node: any
+          inline: boolean
+          className: string
+          children: React.ReactNode
+        }) {
           const language = /language-(\w+)/.exec(className || '')?.[1]
           return !inline && language ? (
             <CodeBlock
@@ -50,7 +60,18 @@ function getComponentsForVariant(variant: any) {
             <>{children}</>
           )
         },
-        code({ node, inline, className, children, ...props }) {
+        code({
+          node,
+          inline,
+          className,
+          children,
+          ...props
+        }: {
+          node: any
+          inline: boolean
+          className: string
+          children: React.ReactNode
+        }) {
           const language = /language-(\w+)/.exec(className || '')?.[1]
           return !inline && language ? (
             <CodeBlock
@@ -76,10 +97,21 @@ function getComponentsForVariant(variant: any) {
         h4: 'p',
         h5: 'p',
         h6: 'p',
-        pre({ children }) {
+        pre({ children }: { children: React.ReactNode }) {
           return <>{children}</>
         },
-        code({ node, inline, className, children, ...props }) {
+        code({
+          node,
+          inline,
+          className,
+          children,
+          ...props
+        }: {
+          node: any
+          inline: boolean
+          className: string
+          children: React.ReactNode
+        }) {
           const language = /language-(\w+)/.exec(className || '')?.[1]
           return !inline && language ? (
             <CodeBlock
@@ -116,7 +148,7 @@ export function MarkdownRenderer(props: any) {
   return (
     <Markdown
       {...rest}
-      remarkPlugins={[remarkGfm, linkifyRegex(/^(?!.*\bRT\b)(?:.+\s)?@\w+/i)]}
+      remarkPlugins={[remarkGfm]}
       rehypePlugins={[
         [rehypeSanitize, schema],
         rehypeSlug,

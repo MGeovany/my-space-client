@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { memo, useState } from 'react'
 
 import { Icons } from '@/components/icons'
-import { ListItem } from '@/components/list-detail/ListItem'
+import { ListItem } from '@/components/list-detail/list-item'
 
 interface ProjectIdeaItemProps {
   projectIdeas: ProjectIdeas

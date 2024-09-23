@@ -6,7 +6,7 @@ import { MutableRefObject, useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
 import { ListContainer } from '@/components/list-detail/ListContainer'
-import { TitleBar } from '@/components/list-detail/TitleBar'
+import { TitleBar } from '@/components/list-detail/title-bar'
 import { LoadingSpinner } from '@/components/loading-spinner'
 import { ProjectIdeaListItem } from '@/components/project-ideas/project-list-item'
 import { API_URL } from '@/constants'

@@ -3,7 +3,7 @@ import { Compass } from 'react-feather'
 
 import Button from '../button'
 import { LoadingSpinner } from '../loading-spinner'
-import { TitleBar } from './TitleBar'
+import { TitleBar } from './title-bar'
 
 function ContentContainer(props: any) {
   return (

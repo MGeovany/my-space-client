@@ -11,7 +11,7 @@ import { ListContainer } from '@/components/list-detail/ListContainer'
 import { LoadingSpinner } from '@/components/loading-spinner'
 import { API_URL } from '@/constants'
 
-import { TitleBar } from '../list-detail/TitleBar'
+import { TitleBar } from '../list-detail/title-bar'
 
 export const BookmarksList = () => {
   const pathname = usePathname()

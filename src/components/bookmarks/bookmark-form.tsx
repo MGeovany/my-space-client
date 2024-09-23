@@ -27,13 +27,15 @@ const BookmarkForm = ({ bookmark, onClose }: BookmarkFormProps) => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
 
-    const accessToken = localStorage.getItem('accessToken')
+    const response = await axios.get('/api/auth/get-auth0-token')
+    const auth0Token = response.data.accessToken
+    console.log('auth0Token', response)
+    localStorage.setItem('auth0Token', auth0Token)
 
-    if (!accessToken) {
-      console.error('No access token available')
+    if (!auth0Token) {
+      toast.error('No access token available')
       return
     }
-
     try {
       if (bookmark) {
         // Editing case
@@ -47,7 +49,7 @@ const BookmarkForm = ({ bookmark, onClose }: BookmarkFormProps) => {
           },
           {
             headers: {
-              Authorization: `Bearer ${accessToken}`,
+              Authorization: `Bearer ${auth0Token}`,
             },
           }
         )
@@ -67,7 +69,7 @@ const BookmarkForm = ({ bookmark, onClose }: BookmarkFormProps) => {
           },
           {
             headers: {
-              Authorization: `Bearer ${accessToken}`,
+              Authorization: `Bearer ${auth0Token}`,
             },
           }
         )
@@ -78,6 +80,7 @@ const BookmarkForm = ({ bookmark, onClose }: BookmarkFormProps) => {
       }
 
       onClose() // Close the modal after the form is submitted
+      window.location.reload() // Refresh the page to see the updated list
     } catch (error) {
       toast.error('Failed to submit bookmark')
       console.error(error)

@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
 
 import { Detail } from '@/components/list-detail/detail'
-import { TitleBar } from '@/components/list-detail/TitleBar'
+import { TitleBar } from '@/components/list-detail/title-bar'
 import { API_URL, toggleLogin } from '@/constants'
 import { registerUser } from '@/services/api/register-user'
 

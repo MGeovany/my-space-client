@@ -1,8 +1,17 @@
-import Image from 'next/image'
+import { Button, Modal, Textarea, TextInput } from '@mantine/core'
+import axios from 'axios'
+import { Pencil, X } from 'lucide-react'
 import { memo, useState } from 'react'
+import toast from 'react-hot-toast'
 
 import { Icons } from '@/components/icons'
-import { ListItem } from '@/components/list-detail/ListItem'
+import { ListItem } from '@/components/list-detail/list-item'
+import { API_URL } from '@/constants'
+import { useUserRole } from '@/hooks/useUserRole'
+
+import { GhostButton } from '../button'
+import { MarkdownRenderer } from '../markdown-renderer'
+import BlogForm from './blog-form'
 
 interface BlogListItemProps {
   blog: Blog
@@ -10,6 +19,9 @@ interface BlogListItemProps {
 }
 
 export const BlogListItem = memo<BlogListItemProps>(({ blog, active }) => {
+  const { userRole } = useUserRole()
+
+  const [editModalOpen, setEditModalOpen] = useState(false)
   const [imageBroken, setImageBroken] = useState<boolean>(false)
 
   function handleClick(e: any, blog: Blog) {
@@ -23,29 +35,136 @@ export const BlogListItem = memo<BlogListItemProps>(({ blog, active }) => {
     }
   }
 
-  return (
-    <ListItem
-      key={blog.id}
-      title={blog.title}
-      byline={
-        <div className="flex items-center space-x-2">
-          {
-            imageBroken ? <Icons.url /> : null
-            /*  <Image
-                src={`https://www.google.com/s2/favicons?domain=${blog.url}`}
-                alt="favicon"
-                width={16}
-                height={16}
-                onError={() => setImageBroken(true)}
-              /> */
-          }
-          <span> {blog.url ? new URL(blog.url).hostname : ''}</span>
+  async function handleDeleteElement(e: any, blog: Blog) {
+    e.preventDefault()
+    e.stopPropagation()
+    console.log('Delete blog', blog)
+
+    toast(
+      (t) => (
+        <div className="p-4 text-white rounded-lg max-w-md mx-auto">
+          <h3 className="text-lg font-semibold">Delete blog?</h3>
+          <p className="mt-2 text-sm text-gray-300">
+            Are you sure you want to delete this blog? This action cannot be
+            undone.
+          </p>
+          <div className="mt-4 flex justify-end gap-2">
+            <button
+              className="px-4 py-2 bg-gray-600 text-gray-200 rounded-lg hover:bg-gray-500 focus:outline-none"
+              onClick={() => toast.dismiss(t.id)}
+            >
+              Cancel
+            </button>
+            <button
+              className="px-4 py-2 bg-red-400 text-white rounded-lg hover:bg-red-300 focus:outline-none"
+              onClick={async () => {
+                toast.dismiss(t.id)
+                try {
+                  const accessToken = localStorage.getItem('auth0Token')
+
+                  if (!accessToken) {
+                    console.error('No access token available')
+                    return
+                  }
+
+                  const res = await axios.delete(`${API_URL}/blog/${blog.id}`, {
+                    headers: {
+                      'Content-Type': 'application/json',
+                      Authorization: `Bearer ${accessToken}`,
+                    },
+                  })
+                  if (res.status === 200) {
+                    toast.success('Blog deleted successfully', {
+                      duration: 4000,
+                    })
+                    window.location.reload()
+                  }
+                } catch (error) {
+                  toast.error('Failed to delete the blog')
+                  console.error(error)
+                }
+              }}
+            >
+              Delete
+            </button>
+          </div>
         </div>
+      ),
+
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+        duration: Infinity,
       }
-      active={active}
-      href="/writing/[id]"
-      as={`/writing/${blog.id}`}
-      onClick={(e) => handleClick(e, blog)}
-    />
+    )
+  }
+
+  const handleEditElement = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setEditModalOpen(true)
+  }
+
+  return (
+    <>
+      <ListItem
+        key={blog.id}
+        title={blog.title}
+        byline={
+          <div className="flex items-center space-x-2">
+            {
+              imageBroken ? <Icons.url /> : null
+              /*  <Image
+            src={`https://www.google.com/s2/favicons?domain=${blog.url}`}
+            alt="favicon"
+            width={16}
+            height={16}
+            onError={() => setImageBroken(true)}
+            /> */
+            }
+            <span> {blog.url ? new URL(blog.url).hostname : ''}</span>
+          </div>
+        }
+        leadingAccessory={
+          userRole === 'admin' ? (
+            <>
+              <GhostButton
+                aria-label="Delete blogs"
+                size="small-square"
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+                  handleDeleteElement(e, blog)
+                }
+              >
+                <X size={16} />
+              </GhostButton>
+              <GhostButton
+                aria-label="Edit blogs"
+                size="small-square"
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+                  handleEditElement(e)
+                }
+              >
+                <Pencil size={16} />
+              </GhostButton>
+            </>
+          ) : undefined
+        }
+        active={active}
+        href="/writing/[id]"
+        as={`/writing/${blog.id}`}
+        onClick={(e) => handleClick(e, blog)}
+      />
+      <Modal
+        opened={editModalOpen}
+        onClose={() => setEditModalOpen(false)}
+        title="Edit blog"
+        size="auto"
+      >
+        <BlogForm blog={blog} onClose={() => setEditModalOpen(false)} />
+      </Modal>
+    </>
   )
 })

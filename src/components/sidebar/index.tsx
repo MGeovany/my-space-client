@@ -2,7 +2,7 @@
 
 import { useContext, useRef } from 'react'
 
-import { TitleBar } from '../list-detail/TitleBar'
+import { TitleBar } from '../list-detail/title-bar'
 import { GlobalNavigationContext } from '../providers'
 import { SidebarNavigation } from './navigation'
 import { SidebarOverlay } from './overlay'

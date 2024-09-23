@@ -25,7 +25,7 @@ const ProjectIdeaForm = ({ projectIdea, onClose }: ProjectIdeaProps) => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
 
-    const accessToken = localStorage.getItem('accessToken')
+    const accessToken = localStorage.getItem('auth0Token')
 
     if (!accessToken) {
       console.error('No access token available')
