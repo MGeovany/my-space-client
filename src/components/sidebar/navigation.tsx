@@ -115,7 +115,7 @@ export function SidebarNavigation() {
           isExternal: false,
         },
 
-        {
+        /*  {
           href: '/writing',
           label: 'Writing',
           icon: WritingIcon,
@@ -124,7 +124,7 @@ export function SidebarNavigation() {
           isExternal: false,
           trailingAction:
             getUserRole(user) === 'admin' ? ThisAddBlogDialog : null,
-        },
+        }, */
       ],
     },
     {
