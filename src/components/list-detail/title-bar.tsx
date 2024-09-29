@@ -125,12 +125,12 @@ export function TitleBar({
         }}
         className={`filter-blur sticky top-0 z-10 flex flex-col justify-center px-3 py-2 dark:border-b dark:border-gray-900`}
       >
-        <div className="flex items-center justify-between flex-none">
+        <div className="flex flex-none items-center justify-between">
           <span className="flex items-center space-x-3">
             {globalMenu && (
               <span
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center justify-center p-2 rounded-md cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-800 lg:hidden"
+                className="flex cursor-pointer items-center justify-center rounded-md p-2 hover:bg-gray-200 lg:hidden dark:hover:bg-gray-800"
               >
                 {isOpen ? (
                   <X size={16} className="text-primary" />
@@ -143,7 +143,7 @@ export function TitleBar({
             {backButton && (
               <Link
                 href={backButtonHref ?? ''}
-                className="flex items-center justify-center p-2 rounded-md text-primary hover:bg-gray-200 dark:hover:bg-gray-800 lg:hidden"
+                className="text-primary flex items-center justify-center rounded-md p-2 hover:bg-gray-200 lg:hidden dark:hover:bg-gray-800"
               >
                 <ArrowLeft size={16} className="text-primary" />
               </Link>
@@ -158,7 +158,7 @@ export function TitleBar({
                     }
                   : {}
               }
-              className="text-sm font-bold text-primary transform-gpu line-clamp-1"
+              className="text-primary line-clamp-1 transform-gpu text-sm font-bold"
             >
               {title}
             </h2>

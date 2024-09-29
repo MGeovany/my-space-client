@@ -74,7 +74,7 @@ function Null() {
             any case, there’s nothing to see here...
           </p>
         </div>
-        <Link href="/" className="text-white font-extrabold">
+        <Link href="/" className="font-extrabold text-white">
           Go home
         </Link>
       </div>

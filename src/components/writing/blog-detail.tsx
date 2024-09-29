@@ -106,7 +106,7 @@ export function BlogDetail({ id }: { id: string }) {
             </Link> */}
             {data.content && (
               <MarkdownRenderer
-                className="italic prose opacity-70"
+                className="prose italic opacity-70"
                 children={data.content}
                 variant="comment"
               />

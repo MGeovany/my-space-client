@@ -41,7 +41,7 @@ export const BlogListItem = memo<BlogListItemProps>(({ blog, active }) => {
 
     toast(
       (t) => (
-        <div className="p-4 text-white rounded-lg max-w-md mx-auto">
+        <div className="mx-auto max-w-md rounded-lg p-4 text-white">
           <h3 className="text-lg font-semibold">Delete blog?</h3>
           <p className="mt-2 text-sm text-gray-300">
             Are you sure you want to delete this blog? This action cannot be
@@ -49,13 +49,13 @@ export const BlogListItem = memo<BlogListItemProps>(({ blog, active }) => {
           </p>
           <div className="mt-4 flex justify-end gap-2">
             <button
-              className="px-4 py-2 bg-gray-600 text-gray-200 rounded-lg hover:bg-gray-500 focus:outline-none"
+              className="rounded-lg bg-gray-600 px-4 py-2 text-gray-200 hover:bg-gray-500 focus:outline-none"
               onClick={() => toast.dismiss(t.id)}
             >
               Cancel
             </button>
             <button
-              className="px-4 py-2 bg-red-400 text-white rounded-lg hover:bg-red-300 focus:outline-none"
+              className="rounded-lg bg-red-400 px-4 py-2 text-white hover:bg-red-300 focus:outline-none"
               onClick={async () => {
                 toast.dismiss(t.id)
                 try {

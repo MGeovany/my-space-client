@@ -41,7 +41,7 @@ export const BookmarksList = () => {
     return (
       <ListContainer onRef={setScrollContainerRef}>
         <BookmarksTitleBar scrollContainerRef={scrollContainerRef} />
-        <div className="flex flex-1 items-center justify-center h-full">
+        <div className="flex h-full flex-1 items-center justify-center">
           <LoadingSpinner />
         </div>
       </ListContainer>
@@ -52,7 +52,7 @@ export const BookmarksList = () => {
     return (
       <ListContainer onRef={setScrollContainerRef}>
         <TitleBar scrollContainerRef={scrollContainerRef} title="Bookmarks" />
-        <div className="flex flex-1 items-center justify-center h-full">
+        <div className="flex h-full flex-1 items-center justify-center">
           <h1 className="text-md text-gray-500">No bookmarks found</h1>
         </div>
       </ListContainer>

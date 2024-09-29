@@ -14,7 +14,7 @@ import { registerUser } from '@/services/api/register-user'
 function SectionTitle(props: any) {
   return (
     <h4
-      className="col-span-2 pt-8 text-lg font-extrabold text-black dark:text-white md:pt-0 md:text-right md:text-base md:font-normal md:text-opacity-40"
+      className="col-span-2 pt-8 text-lg font-extrabold text-black md:pt-0 md:text-right md:text-base md:font-normal md:text-opacity-40 dark:text-white"
       {...props}
     />
   )
@@ -37,15 +37,15 @@ function TableRow({ href, title, subtitle, date }: TableRowProps) {
       target="_blank"
       rel="noopener noreferrer"
       href={href}
-      className="flex sm:items-center flex-col sm:flex-row gap-0.5 sm:gap-4 group"
+      className="group flex flex-col gap-0.5 sm:flex-row sm:items-center sm:gap-4"
     >
       <strong className="line-clamp-2 font-medium text-gray-1000 group-hover:text-blue-600 group-hover:underline dark:text-gray-100 dark:group-hover:text-blue-500">
         {title}
       </strong>
-      <span className="hidden sm:flex flex-1 border-t border-gray-300 border-dashed shrink dark:border-gray-800" />
-      {subtitle && <span className="flex-none text-tertiary">{subtitle}</span>}
+      <span className="hidden flex-1 shrink border-t border-dashed border-gray-300 sm:flex dark:border-gray-800" />
+      {subtitle && <span className="text-tertiary flex-none">{subtitle}</span>}
       {date && (
-        <span className="flex-none font-mono text-quaternary">{date}</span>
+        <span className="text-quaternary flex-none font-mono">{date}</span>
       )}
     </a>
   )
@@ -54,7 +54,7 @@ function TableRow({ href, title, subtitle, date }: TableRowProps) {
 function SectionContainer(props: any) {
   return (
     <div
-      className="grid items-start grid-cols-1 gap-6 md:grid-cols-12"
+      className="grid grid-cols-1 items-start gap-6 md:grid-cols-12"
       {...props}
     />
   )
@@ -102,11 +102,11 @@ export function Intro() {
       <div className="p-4" ref={titleRef} />
 
       <Detail.ContentContainer>
-        <div className="pb-24 space-y-8 md:space-y-16">
+        <div className="space-y-8 pb-24 md:space-y-16">
           <SectionContainer>
             <SectionTitle />
             <SectionContent>
-              <div className="prose text-primary">
+              <div className="text-primary prose">
                 <p>
                   Hi, I’m Marlon Geovany Castro Mejia.{' '}
                   {!start &&
@@ -159,7 +159,7 @@ export function Intro() {
                 alt="Marlon Geovany Castro Mejia"
                 width={200}
                 height={200}
-                className="rounded-lg my-4"
+                className="my-4 rounded-lg"
               />
             </SectionContent>
           </SectionContainer>

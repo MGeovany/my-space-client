@@ -94,7 +94,7 @@ const ProjectIdeaForm = ({ projectIdea, onClose }: ProjectIdeaProps) => {
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="bg-white mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-black focus:border-black"
+          className="mt-1 block w-full rounded-lg border border-gray-300 bg-white p-2 focus:border-black focus:ring-black"
           required
         />
       </div>
@@ -111,7 +111,7 @@ const ProjectIdeaForm = ({ projectIdea, onClose }: ProjectIdeaProps) => {
           type="url"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          className="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-black focus:border-black"
+          className="mt-1 block w-full rounded-lg border border-gray-300 p-2 focus:border-black focus:ring-black"
           required
         />
       </div>
@@ -127,7 +127,7 @@ const ProjectIdeaForm = ({ projectIdea, onClose }: ProjectIdeaProps) => {
           id="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-black focus:border-black"
+          className="mt-1 block w-full rounded-lg border border-gray-300 p-2 focus:border-black focus:ring-black"
           rows={3}
           required
         />
@@ -135,7 +135,7 @@ const ProjectIdeaForm = ({ projectIdea, onClose }: ProjectIdeaProps) => {
 
       <button
         type="submit"
-        className="w-full py-2 px-4 bg-black text-white font-semibold rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+        className="w-full rounded-lg bg-black px-4 py-2 font-semibold text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
       >
         Submit
       </button>

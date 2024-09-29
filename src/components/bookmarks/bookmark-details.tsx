@@ -93,7 +93,7 @@ export function BookmarkDetail({ id }: { id: string }) {
               href={bookmark.url}
               target="_blank"
               rel="noopener"
-              className="flex items-center space-x-2 leading-snug text-tertiary"
+              className="text-tertiary flex items-center space-x-2 leading-snug"
             >
               {
                 imageBroken ? <Icons.url /> : null
@@ -109,7 +109,7 @@ export function BookmarkDetail({ id }: { id: string }) {
             </Link>
             {bookmark.description && (
               <MarkdownRenderer
-                className="italic prose opacity-70"
+                className="prose italic opacity-70"
                 children={bookmark.description}
                 variant="comment"
               />

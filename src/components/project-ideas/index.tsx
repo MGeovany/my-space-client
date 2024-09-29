@@ -42,7 +42,7 @@ export const ProjectIdeasList = () => {
           scrollContainerRef={scrollContainerRef}
           title="Project Ideas"
         />
-        <div className="flex flex-1 items-center justify-center h-full">
+        <div className="flex h-full flex-1 items-center justify-center">
           <LoadingSpinner />
         </div>
       </ListContainer>
@@ -56,7 +56,7 @@ export const ProjectIdeasList = () => {
           scrollContainerRef={scrollContainerRef}
           title="Project Ideas"
         />
-        <div className="flex flex-1 items-center justify-center h-full">
+        <div className="flex h-full flex-1 items-center justify-center">
           <h1 className="text-md text-gray-500">No project ideas found</h1>
         </div>
       </ListContainer>

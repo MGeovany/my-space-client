@@ -53,7 +53,7 @@ const ThisAddProjectDialog = () => {
       </div>
       <Modal opened={opened} onClose={close} centered padding={'lg'}>
         <div className="px-10 pb-5">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
+          <h2 className="mb-4 text-xl font-semibold text-gray-900">
             Create Project Idea
           </h2>
           <ProjectIdeaForm onClose={close} />
@@ -180,14 +180,14 @@ export function SidebarNavigation() {
   ]
 
   return (
-    <div className="flex-1 px-3 py-3 space-y-1">
+    <div className="flex-1 space-y-1 px-3 py-3">
       {sections.map((section, i) => {
         return (
           <ul key={i} className="space-y-1">
             {section.label && (
               <h4
                 key={i}
-                className="px-2 pt-5 pb-2 text-xs font-semibold text-gray-1000 text-opacity-40 dark:text-white"
+                className="px-2 pb-2 pt-5 text-xs font-semibold text-gray-1000 text-opacity-40 dark:text-white"
               >
                 {section.label}
               </h4>

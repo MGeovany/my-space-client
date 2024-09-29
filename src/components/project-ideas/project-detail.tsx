@@ -91,7 +91,7 @@ export function ProjectDetail({ id }: { id: string }) {
               href={data.url}
               target="_blank"
               rel="noopener"
-              className="flex items-center space-x-2 leading-snug text-tertiary"
+              className="text-tertiary flex items-center space-x-2 leading-snug"
             >
               {imageBroken ? (
                 <Icons.url />
@@ -108,7 +108,7 @@ export function ProjectDetail({ id }: { id: string }) {
             </Link>
             {data.url && (
               <MarkdownRenderer
-                className="italic prose opacity-70"
+                className="prose italic opacity-70"
                 children={data.description}
                 variant="comment"
               />

@@ -82,10 +82,10 @@ const BlogForm = ({ blog, onClose }: BlogFormProps) => {
     <form onSubmit={handleSubmit}>
       <div className="flex flex-col">
         {/* Input para el título */}
-        <div className="w-fit my-4">
+        <div className="my-4 w-fit">
           <label
             htmlFor="title"
-            className="block text-md text-gray-700 font-black"
+            className="text-md block font-black text-gray-700"
           >
             Title
           </label>
@@ -95,12 +95,12 @@ const BlogForm = ({ blog, onClose }: BlogFormProps) => {
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="bg-white mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-black focus:border-black min-w-80"
+              className="mt-1 block w-full min-w-80 rounded-lg border border-gray-300 bg-white p-2 focus:border-black focus:ring-black"
               required
             />
             <button
               type="submit"
-              className="w-full py-2 px-4 bg-black text-white font-semibold rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+              className="w-full rounded-lg bg-black px-4 py-2 font-semibold text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
             >
               Submit
             </button>
@@ -119,23 +119,23 @@ const BlogForm = ({ blog, onClose }: BlogFormProps) => {
               id="description"
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:ring-black focus:border-black"
+              className="mt-1 block w-full rounded-lg border border-gray-300 p-2 focus:border-black focus:ring-black"
               rows={50}
               required
             />
           </div>
           {/* Previsualización en markdown */}
-          <div className="w-1/2 bg-gray-100 p-4 border rounded mt-5">
+          <div className="mt-5 w-1/2 rounded border bg-gray-100 p-4">
             <MarkdownRenderer children={content} />
             {content}
           </div>
         </div>
       </div>
 
-      <div className="flex justify-end mt-4">
+      <div className="mt-4 flex justify-end">
         <button
           type="submit"
-          className="w-auto py-2 px-4 bg-black text-white font-semibold rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+          className="w-auto rounded-lg bg-black px-4 py-2 font-semibold text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
         >
           Submit
         </button>
