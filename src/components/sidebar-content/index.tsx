@@ -31,16 +31,16 @@ export const SidebarContent: FC<SidebarContentProps> = ({
   }
 
   return (
-    <div className="border-2 border-l-0 h-full max-h-screen min-h-screen w-[300px] min-w-[300px] p-4 border-zinc-800 bg-zinc-900 overflow-auto">
-      <h1 className="font-bold text-sm py-2">{title}</h1>
-      <ul className="space-y-2 my-6">
+    <div className="h-full max-h-screen min-h-screen w-[300px] min-w-[300px] overflow-auto border-2 border-l-0 border-zinc-800 bg-zinc-900 p-4">
+      <h1 className="py-2 text-sm font-bold">{title}</h1>
+      <ul className="my-6 space-y-2">
         {data.map((content, index) => {
           const isActive = pathname === `/${redirect}/${content.id}`
 
           return (
             <li
               key={content.id}
-              className={`mt-8 p-2 rounded-md cursor-pointer text-sm ${
+              className={`mt-8 cursor-pointer rounded-md p-2 text-sm ${
                 isActive ? 'bg-zinc-700' : 'hover:bg-zinc-800'
               }`}
             >
