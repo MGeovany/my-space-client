@@ -2,7 +2,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { X } from 'lucide-react'
 import { Fragment, useRef, useState } from 'react'
 
-import { GhostButton } from '../button'
+import { GhostButton, Size } from '../button'
 
 interface DialogProps {
   trigger?: React.ReactElement
@@ -74,7 +74,7 @@ export function DialogComponent({
                     </Dialog.Title>
                     <GhostButton
                       aria-label="Close dialog"
-                      size="small-square"
+                      size={Size.smallSquare}
                       ref={closeButtonRef}
                       onClick={closeModal}
                     >

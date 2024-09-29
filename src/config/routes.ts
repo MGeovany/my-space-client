@@ -20,7 +20,7 @@ const routes = {
     seo: extendSEO({
       title: 'Writing',
       description: 'Thinking out loud about software design and development.',
-      image: 'og/writing.png',
+      image: '/static/meta/me.webp',
       url: 'writing',
     }),
   },
@@ -30,7 +30,7 @@ const routes = {
     seo: extendSEO({
       title: 'Bookmarks',
       description: 'Internet things, saved for later.',
-      image: 'og/bookmarks.png',
+      image: '/static/meta/me.webp',
       url: 'bookmarks',
     }),
   },
@@ -40,7 +40,7 @@ const routes = {
     seo: extendSEO({
       title: 'Project Ideas',
       description: 'A collection of project ideas.',
-      image: 'og/bookmarks.png',
+      image: '/static/meta/me.webp',
       url: 'project-ideas',
     }),
   },

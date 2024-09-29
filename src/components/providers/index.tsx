@@ -1,17 +1,13 @@
 'use client'
 import { UserProvider } from '@auth0/nextjs-auth0/client'
 import { MantineProvider } from '@mantine/core'
-import { NextPageContext } from 'next'
 import { createContext, useState } from 'react'
-
-import { AuthProvider } from '@/context'
 
 import { SEO } from './seo'
 import { Toast } from './toaster'
 
 interface Props {
   children?: any
-  pageProps: NextPageContext
 }
 
 const globalNavigationContext = {
@@ -21,7 +17,7 @@ const globalNavigationContext = {
 
 export const GlobalNavigationContext = createContext(globalNavigationContext)
 
-export function Providers({ children, pageProps }: Props) {
+export function Providers({ children }: Props) {
   const initialState = {
     isOpen: false,
     setIsOpen,

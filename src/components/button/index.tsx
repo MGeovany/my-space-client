@@ -12,7 +12,7 @@ interface BaseButtonProps {
   href?: string | null
   as?: string | null
   forwardedRef?: Ref<HTMLAnchorElement | HTMLButtonElement> | null
-  [key: string]: unknown
+  className?: string
 }
 
 type ButtonAsButton = BaseButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
@@ -42,7 +42,7 @@ function BaseButton({
 const baseClasses =
   'flex space-x-2 flex-none items-center justify-center cursor-pointer leading-none transition-all font-semibold'
 
-enum Size {
+export enum Size {
   large = 'large',
   small = 'small',
   smallSquare = 'small-square',
@@ -100,7 +100,7 @@ export default Button
 export const PrimaryButton = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
   ButtonProps
->((props, ref) => {
+>((props: ButtonProps, ref) => {
   const classes = `text-white hover:text-white shadow-xs bg-blue-500 border border-blue-600 dark:border-blue-400 dark:border-opacity-50 hover:shadow-sm`
   const size = composer.getSize(props.size)
   const opacity = composer.getOpacity(props.disabled)

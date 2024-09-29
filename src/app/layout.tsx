@@ -12,17 +12,11 @@ import { Providers } from '@/components/providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function RootLayout({
-  children,
-  pageProps,
-}: Readonly<{
-  children: ReactNode
-  pageProps: any
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers pageProps={pageProps}>
+        <Providers>
           <SiteLayout>{children}</SiteLayout>
         </Providers>
       </body>

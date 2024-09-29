@@ -1,3 +1,5 @@
+'use client'
+
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
@@ -13,7 +15,7 @@ const BookmarkForm = ({ bookmark, onClose }: BookmarkFormProps) => {
   const [title, setTitle] = useState(bookmark?.title || '')
   const [url, setUrl] = useState(bookmark?.url || '')
   const [description, setDescription] = useState(bookmark?.description || '')
-  const [tag, setTag] = useState(bookmark?.tag || '')
+  const [tag, setTag] = useState(bookmark?.tag || 'Tools')
 
   useEffect(() => {
     if (bookmark) {
@@ -26,12 +28,14 @@ const BookmarkForm = ({ bookmark, onClose }: BookmarkFormProps) => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
+    toast.loading('Submitting bookmark...')
 
     const response = await axios.get('/api/auth/get-auth0-token')
     const auth0Token = response.data.accessToken
     localStorage.setItem('auth0Token', auth0Token)
 
     if (!auth0Token) {
+      toast.dismiss()
       toast.error('No access token available')
       return
     }
@@ -54,6 +58,7 @@ const BookmarkForm = ({ bookmark, onClose }: BookmarkFormProps) => {
         )
 
         if (response.status === 200) {
+          toast.dismiss()
           toast.success('Bookmark updated successfully')
         }
       } else {
@@ -72,15 +77,17 @@ const BookmarkForm = ({ bookmark, onClose }: BookmarkFormProps) => {
             },
           }
         )
-
-        if (response.status === 200) {
+        console.log(response)
+        if (response.status === 201) {
+          toast.dismiss()
           toast.success('Bookmark added successfully')
         }
       }
 
       onClose() // Close the modal after the form is submitted
-      window.location.reload() // Refresh the page to see the updated list
+      // window.location.reload() // Refresh the page to see the updated list
     } catch (error) {
+      toast.dismiss()
       toast.error('Failed to submit bookmark')
     }
   }

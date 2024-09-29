@@ -8,7 +8,7 @@ import { useHotkeys } from 'react-hotkeys-hook'
 
 import { Detail } from '@/components/list-detail/detail'
 import { TitleBar } from '@/components/list-detail/title-bar'
-import { API_URL, toggleLogin } from '@/constants'
+import { toggleLogin } from '@/constants'
 import { registerUser } from '@/services/api/register-user'
 
 function SectionTitle(props: any) {
@@ -77,17 +77,20 @@ const workHistory = [
 export function Intro() {
   const [start, setStart] = useState(false)
   const { user } = useUser()
+  const titleRef = useRef<HTMLParagraphElement | null>(null)
+  const scrollContainerRef = useRef(null)
 
   useEffect(() => {
     if (user) {
       registerUser(user)
     }
+
+    if (typeof window !== 'undefined') {
+      titleRef.current = document.createElement('p')
+    }
   }, [user])
 
   useHotkeys(toggleLogin, () => setStart((p) => !p))
-
-  const titleRef = useRef<HTMLParagraphElement>(document.createElement('p'))
-  const scrollContainerRef = useRef(null)
 
   return (
     <Detail.Container data-cy="home-intro" ref={scrollContainerRef}>
@@ -155,7 +158,7 @@ export function Intro() {
                 </p>
               </div>
               <Image
-                src="/me.webp"
+                src="/static/meta/me.webp"
                 alt="Marlon Geovany Castro Mejia"
                 width={200}
                 height={200}

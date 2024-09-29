@@ -9,7 +9,7 @@ import { ListItem } from '@/components/list-detail/list-item'
 import { API_URL } from '@/constants'
 import { useUserRole } from '@/hooks/useUserRole'
 
-import { GhostButton } from '../button'
+import { GhostButton, Size } from '../button'
 import BookmarkForm from './bookmark-form'
 
 interface BookmarksListItemProps {
@@ -158,7 +158,7 @@ export const BookmarksListItem = memo<BookmarksListItemProps>(
               <>
                 <GhostButton
                   aria-label="Delete bookmarks"
-                  size="small-square"
+                  size={Size.smallSquare}
                   onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
                     handleDeleteElement(e, bookmark)
                   }
@@ -167,7 +167,7 @@ export const BookmarksListItem = memo<BookmarksListItemProps>(
                 </GhostButton>
                 <GhostButton
                   aria-label="Edit bookmarks"
-                  size="small-square"
+                  size={Size.smallSquare}
                   onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
                     handleEditBookmark(e, bookmark)
                   }

@@ -1,0 +1,14 @@
+{
+  "name": "M Geovany",
+  "short_name": "Geovany",
+  "icons": [
+    {
+      "src": "/static/meta/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

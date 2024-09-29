@@ -1,12 +1,16 @@
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
-import { DefaultSeo } from 'next-seo'
 
-import { baseUrl, defaultSEO } from '@/config/seo'
+import { defaultSEO } from '@/config/seo'
+
+const DefaultSeo = dynamic(
+  () => import('next-seo').then((mod) => mod.DefaultSeo),
+  { ssr: false }
+)
 
 export function SEO() {
   return (
     <>
-      <DefaultSeo {...defaultSEO} />
       <Head>
         <link rel="icon" href="/static/favicon.ico" sizes="any" />
         <link
@@ -15,18 +19,12 @@ export function SEO() {
           type="image/svg+xml"
           sizes="any"
         />
-        <link rel="mask-icon" href="/static/meta/mask-icon.svg" />
+        <link rel="mask-icon" href="/static/favicon.svg" />
         <link rel="apple-touch-icon" href="/static/meta/apple-touch-icon.png" />
         <link rel="manifest" href="/static/meta/manifest.webmanifest" />
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          title="RSS feed"
-          href={`${baseUrl}/writing/rss`}
-        />
         <meta
           name="theme-color"
-          content="#fff"
+          content="rgb(23, 23, 23)"
           media="(prefers-color-scheme: light)"
         />
         <meta
@@ -35,6 +33,7 @@ export function SEO() {
           media="(prefers-color-scheme: dark)"
         />
       </Head>
+      <DefaultSeo {...defaultSEO} />
     </>
   )
 }

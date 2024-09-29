@@ -8,7 +8,7 @@ import { NextSeo } from 'next-seo'
 import { MutableRefObject, RefObject, useEffect, useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 
-import { PrimaryButton } from '@/components/button'
+import { PrimaryButton, Size } from '@/components/button'
 import { Icons } from '@/components/icons'
 import { Detail } from '@/components/list-detail/detail'
 import { TitleBar } from '@/components/list-detail/title-bar'
@@ -116,7 +116,7 @@ export function ProjectDetail({ id }: { id: string }) {
           </Detail.Header>
           <div className="mt-6">
             <PrimaryButton
-              size="large"
+              size={Size.large}
               href={data.url}
               target="_blank"
               rel="noopener noreferrer"

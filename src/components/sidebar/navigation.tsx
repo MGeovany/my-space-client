@@ -6,7 +6,7 @@ import { useDisclosure } from '@mantine/hooks'
 import { Linkedin, Plus } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 
-import { GhostButton } from '@/components/button'
+import { GhostButton, Size } from '@/components/button'
 import {
   BookmarksIcon,
   ExternalLinkIcon,
@@ -28,11 +28,16 @@ function ThisAddBookmarkDialog() {
   return (
     <>
       <div onClick={open}>
-        <GhostButton aria-label="Add bookmark" size="small-square">
+        <GhostButton aria-label="Add bookmark" size={Size.smallSquare}>
           <Plus size={16} />
         </GhostButton>
       </div>
       <Modal opened={opened} onClose={close} centered padding={'lg'}>
+        <div className="px-10 pb-5">
+          <h2 className="mb-4 text-xl font-semibold text-gray-900">
+            Add Bookmark
+          </h2>
+        </div>
         <div className="px-10 pb-5">
           <BookmarkForm onClose={close} />
         </div>
@@ -47,7 +52,7 @@ const ThisAddProjectDialog = () => {
   return (
     <>
       <div onClick={open}>
-        <GhostButton aria-label="Add project idea" size="small-square">
+        <GhostButton aria-label="Add project idea" size={Size.smallSquare}>
           <Plus size={16} />
         </GhostButton>
       </div>
@@ -69,7 +74,7 @@ const ThisAddBlogDialog = () => {
   return (
     <>
       <div onClick={open}>
-        <GhostButton aria-label="Add blog" size="small-square">
+        <GhostButton aria-label="Add blog" size={Size.smallSquare}>
           <Plus size={16} />
         </GhostButton>
       </div>

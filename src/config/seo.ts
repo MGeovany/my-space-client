@@ -12,7 +12,7 @@ export const defaultSEO = {
     site_name: 'mgeovany space',
     images: [
       {
-        url: `${baseUrl}/static/og/default.png`,
+        url: `${baseUrl}/static/meta/me.webp`,
         alt: 'M Geovany',
       },
     ],

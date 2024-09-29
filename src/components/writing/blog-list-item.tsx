@@ -9,7 +9,7 @@ import { ListItem } from '@/components/list-detail/list-item'
 import { API_URL } from '@/constants'
 import { useUserRole } from '@/hooks/useUserRole'
 
-import { GhostButton } from '../button'
+import { GhostButton, Size } from '../button'
 import { MarkdownRenderer } from '../markdown-renderer'
 import BlogForm from './blog-form'
 
@@ -131,7 +131,7 @@ export const BlogListItem = memo<BlogListItemProps>(({ blog, active }) => {
             <>
               <GhostButton
                 aria-label="Delete blogs"
-                size="small-square"
+                size={Size.smallSquare}
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
                   handleDeleteElement(e, blog)
                 }
@@ -140,7 +140,7 @@ export const BlogListItem = memo<BlogListItemProps>(({ blog, active }) => {
               </GhostButton>
               <GhostButton
                 aria-label="Edit blogs"
-                size="small-square"
+                size={Size.smallSquare}
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
                   handleEditElement(e)
                 }

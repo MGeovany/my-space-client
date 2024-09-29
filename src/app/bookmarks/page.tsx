@@ -1,14 +1,21 @@
 'use client'
-import { NextSeo } from 'next-seo'
+
+import dynamic from 'next/dynamic'
 
 import routes from '@/config/routes'
 
-export default function Bookmarks() {
+const NextSeo = dynamic(() => import('next-seo').then((mod) => mod.NextSeo), {
+  ssr: false,
+})
+
+export default function BookmarksPage() {
   return (
-    <NextSeo
-      title={routes.bookmarks.seo.title}
-      description={routes.bookmarks.seo.description}
-      openGraph={routes.bookmarks.seo.openGraph}
-    />
+    <>
+      <NextSeo
+        title={routes.bookmarks.seo.title}
+        description={routes.bookmarks.seo.description}
+        openGraph={routes.bookmarks.seo.openGraph}
+      />
+    </>
   )
 }
