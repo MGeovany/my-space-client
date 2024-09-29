@@ -1,7 +1,7 @@
+import Link from 'next/link'
 import { forwardRef, ReactNode } from 'react'
 import { Compass } from 'react-feather'
 
-import Button from '../button'
 import { LoadingSpinner } from '../loading-spinner'
 import { TitleBar } from './title-bar'
 
@@ -74,7 +74,9 @@ function Null() {
             any case, there’s nothing to see here...
           </p>
         </div>
-        <Button href="/">Go home</Button>
+        <Link href="/" className="text-white font-extrabold">
+          Go home
+        </Link>
       </div>
     </Container>
   )
