@@ -29,7 +29,6 @@ const BookmarkForm = ({ bookmark, onClose }: BookmarkFormProps) => {
 
     const response = await axios.get('/api/auth/get-auth0-token')
     const auth0Token = response.data.accessToken
-    console.log('auth0Token', response)
     localStorage.setItem('auth0Token', auth0Token)
 
     if (!auth0Token) {
@@ -83,7 +82,6 @@ const BookmarkForm = ({ bookmark, onClose }: BookmarkFormProps) => {
       window.location.reload() // Refresh the page to see the updated list
     } catch (error) {
       toast.error('Failed to submit bookmark')
-      console.error(error)
     }
   }
 

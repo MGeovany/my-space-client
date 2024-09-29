@@ -11,10 +11,8 @@ export const GET = withApiAuthRequired(async (req) => {
         scope: 'openid profile email',
       },
     })
-    console.log('Access token:', accessToken)
     return NextResponse.json({ accessToken })
   } catch (error) {
-    console.error('Error obtaining access token:', error)
     return NextResponse.json({
       error:
         'Failed to obtain access token, session may have expired please log in again',

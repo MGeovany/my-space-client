@@ -27,7 +27,6 @@ const BlogForm = ({ blog, onClose }: BlogFormProps) => {
     try {
       const response = await axios.get('/api/auth/get-auth0-token')
       const auth0Token = response.data.accessToken
-      console.log('auth0Token', response)
       localStorage.setItem('auth0Token', auth0Token)
 
       if (!auth0Token) {
@@ -76,7 +75,6 @@ const BlogForm = ({ blog, onClose }: BlogFormProps) => {
       window.location.reload() // Refresh the page to see the updated list
     } catch (error) {
       toast.error('There was an error, please try again')
-      console.error(error)
     }
   }
 

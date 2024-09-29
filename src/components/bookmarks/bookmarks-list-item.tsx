@@ -40,7 +40,6 @@ export const BookmarksListItem = memo<BookmarksListItemProps>(
     async function handleDeleteElement(e: any, bookmark: Bookmark) {
       e.preventDefault()
       e.stopPropagation()
-      console.log('Delete bookmark', bookmark)
 
       toast(
         (t) => (
@@ -65,7 +64,8 @@ export const BookmarksListItem = memo<BookmarksListItemProps>(
                     const accessToken = localStorage.getItem('auth0Token')
 
                     if (!accessToken) {
-                      console.error('No access token available')
+                      toast.dismiss(t.id)
+                      toast.error('No access token available')
                       return
                     }
 
@@ -86,7 +86,6 @@ export const BookmarksListItem = memo<BookmarksListItemProps>(
                     }
                   } catch (error) {
                     toast.error('Failed to delete the bookmark')
-                    console.error(error)
                   }
                 }}
               >

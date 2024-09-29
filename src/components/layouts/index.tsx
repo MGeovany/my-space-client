@@ -15,8 +15,6 @@ export function ListDetailView({ list, detail, hasDetail = false }: Props) {
   const pathname = usePathname()
   const hasDetailUrl =
     /\/(project-ideas|writing|bookmarks)\/[a-zA-Z0-9-]+$/.test(pathname)
-  console.log('list-detail/index.tsx: hasDetailUrl:', hasDetailUrl)
-
   return (
     <div className="flex w-full">
       {list && (

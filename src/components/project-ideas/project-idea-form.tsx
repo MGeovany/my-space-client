@@ -28,7 +28,8 @@ const ProjectIdeaForm = ({ projectIdea, onClose }: ProjectIdeaProps) => {
     const accessToken = localStorage.getItem('auth0Token')
 
     if (!accessToken) {
-      console.error('No access token available')
+      toast.dismiss()
+      toast.error('No access token available')
       return
     }
 
@@ -76,7 +77,6 @@ const ProjectIdeaForm = ({ projectIdea, onClose }: ProjectIdeaProps) => {
       onClose() // Close the modal after the form is submitted
     } catch (error) {
       toast.error('Failed to submit projectIdea')
-      console.error(error)
     }
   }
 

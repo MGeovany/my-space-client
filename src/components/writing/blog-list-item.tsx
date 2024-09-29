@@ -38,7 +38,6 @@ export const BlogListItem = memo<BlogListItemProps>(({ blog, active }) => {
   async function handleDeleteElement(e: any, blog: Blog) {
     e.preventDefault()
     e.stopPropagation()
-    console.log('Delete blog', blog)
 
     toast(
       (t) => (
@@ -63,7 +62,7 @@ export const BlogListItem = memo<BlogListItemProps>(({ blog, active }) => {
                   const accessToken = localStorage.getItem('auth0Token')
 
                   if (!accessToken) {
-                    console.error('No access token available')
+                    toast.error('No access token available')
                     return
                   }
 
@@ -81,7 +80,6 @@ export const BlogListItem = memo<BlogListItemProps>(({ blog, active }) => {
                   }
                 } catch (error) {
                   toast.error('Failed to delete the blog')
-                  console.error(error)
                 }
               }}
             >

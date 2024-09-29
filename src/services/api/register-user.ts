@@ -21,7 +21,7 @@ export async function registerUser(user: UserProfile | undefined) {
         toast.error('Registration failed')
       }
     } catch (error) {
-      console.error(error)
+      toast.error('Registration failed')
     }
   }
 }
