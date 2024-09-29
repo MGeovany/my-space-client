@@ -1,5 +1,3 @@
-import { XCircle } from 'react-feather'
-
 import { BookmarkTag } from '@/constants'
 
 interface Tag {

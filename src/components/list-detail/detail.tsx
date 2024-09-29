@@ -1,6 +1,6 @@
+import { Compass } from 'lucide-react'
 import Link from 'next/link'
 import { forwardRef, ReactNode } from 'react'
-import { Compass } from 'react-feather'
 
 import { LoadingSpinner } from '../loading-spinner'
 import { TitleBar } from './title-bar'

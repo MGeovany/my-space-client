@@ -1,6 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react'
+import { X } from 'lucide-react'
 import { Fragment, useRef, useState } from 'react'
-import { X } from 'react-feather'
 
 import { GhostButton } from '../button'
 
