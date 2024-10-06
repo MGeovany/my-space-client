@@ -18,10 +18,10 @@ export async function registerUser(user: UserProfile | undefined) {
       if (response.data.success) {
         toast.success('Registration successful')
       } else {
-        toast.error('Registration failed')
+        console.error('Registration failed')
       }
     } catch (error) {
-      toast.error('Registration failed')
+      console.error('Registration failed')
     }
   }
 }
