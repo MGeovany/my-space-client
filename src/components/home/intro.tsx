@@ -112,7 +112,7 @@ export function Intro() {
               <div className="text-primary prose">
                 <p>
                   Hi, I’m Marlon Geovany Castro Mejia.{' '}
-                  {!start &&
+                  {start &&
                     (!user ? (
                       <Link href="/api/auth/login">Login with auth0</Link>
                     ) : (
